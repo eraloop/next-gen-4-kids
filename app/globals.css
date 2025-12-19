@@ -1,26 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600&family=Dancing+Script:wght@400;700&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Editorial Color Palette: High Contrast */
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+
+  --color-primary: #000000;
+  --color-secondary: #f5f5f7;
+
+  --color-accent: #0070f3;
+  --color-accent-foreground: #ffffff;
+
+  /* Expanded Highlight System (Saturated for better contrast) */
+  --color-highlight: #E66000;
+  /* More saturated Burned Orange */
+  --color-sky: #007FFF;
+  /* More saturated Sky Blue */
+  --color-leaf: #00CC77;
+  /* More saturated Leaf Green */
+  --color-sun: #FFD200;
+  /* More saturated Sunshine Yellow */
+
+  --color-highlight-soft: rgba(230, 96, 0, 0.08);
+  --color-sky-soft: rgba(0, 127, 255, 0.08);
+  --color-leaf-soft: rgba(0, 204, 119, 0.08);
+  --color-sun-soft: rgba(255, 210, 0, 0.12);
+
+  --color-muted: #f5f5f7;
+  --color-muted-foreground: #6e6e73;
+
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-input: rgba(0, 0, 0, 0.08);
+
+  --radius-none: 0px;
+
+  /* Typography Stacks */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-playful: 'Dancing Script', cursive;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+
+  /* Editorial Container */
+  .editorial-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12;
+  }
+
+  /* Typography Hierarchy */
+  .heading-hero {
+    @apply text-6xl md:text-8xl font-semibold leading-[0.95] tracking-tighter uppercase;
+  }
+
+  .heading-section {
+    @apply text-4xl md:text-5xl font-semibold leading-[1.1] tracking-tight;
+  }
+
+  .text-body-large {
+    @apply text-xl md:text-2xl font-light leading-relaxed text-muted-foreground;
+  }
+
+  /* Playful Script Utility */
+  .font-playful {
+    font-family: var(--font-playful);
+  }
+
+  /* Color Utilities */
+  .text-highlight {
+    color: var(--color-highlight);
+  }
+
+  .text-sky {
+    color: var(--color-sky);
+  }
+
+  .text-leaf {
+    color: var(--color-leaf);
+  }
+
+  .text-sun {
+    color: var(--color-sun);
+  }
+
+  .bg-highlight {
+    background-color: var(--color-highlight);
+  }
+
+  .bg-sky {
+    background-color: var(--color-sky);
+  }
+
+  .bg-leaf {
+    background-color: var(--color-leaf);
+  }
+
+  .bg-sun {
+    background-color: var(--color-sun);
+  }
+
+  /* Layout Spacing */
+  .section-padding {
+    @apply py-24 md:py-40;
+  }
+
+  /* Minimalist Borders (No Shadows by default, but we'll use them for emphasis) */
+  .editorial-border {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Base Animations (Subtle) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(1rem);
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
