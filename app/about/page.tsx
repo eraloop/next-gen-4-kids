@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 export default function AboutPage() {
   const stats = [
     { label: "Schools Reached", value: "150+", id: "STA-01", color: "text-highlight" },
-    { label: "Youth Impacted", value: "12,000+", id: "STA-02", color: "text-sky" },
+    { label: "Youth Impacted", value: "12k+", id: "STA-02", color: "text-sky" },
     { label: "Active Partners", value: "24", id: "STA-03", color: "text-leaf", highlight: true },
   ];
 
@@ -50,9 +50,11 @@ export default function AboutPage() {
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
               {stats.map((s, i) => (
-                <Card key={i} className={cn(
-                    "p-12 md:p-16 space-y-12 transition-all duration-700 border-none group flex flex-col justify-between h-full min-h-[300px]",
-                    s.highlight ? "bg-leaf text-white hover:bg-black" : "bg-white hover:bg-black hover:text-white"
+               <Card key={i} className={cn(
+                  "p-12 md:p-16 space-y-12 transition-all duration-700 group flex flex-col justify-between h-full min-h-[300px]",
+                  s.highlight 
+                    ? "bg-leaf text-white hover:bg-black border-none" 
+                    : "bg-white hover:bg-black hover:text-white border border-black/5"
                 )}>
                   <div className={cn(
                     "text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
@@ -122,23 +124,25 @@ export default function AboutPage() {
                   hoverBg: "hover:bg-leaf"
                 }
               ].map((val, i) => (
-                <Card key={i} className={cn(
-                    "group border-none transition-all duration-700 h-full min-h-[400px] justify-between",
-                    val.highlight ? cn(val.bgColor, "text-white hover:bg-black") : cn(val.bgColor, "hover:text-white", val.hoverBg)
+               <Card key={i} className={cn(
+                  "group transition-all duration-700 h-full min-h-[400px] justify-between",
+                  val.highlight 
+                    ? cn(val.bgColor, "text-white hover:bg-black border-none") 
+                    : cn(val.bgColor, "hover:text-white border border-black/5", val.hoverBg)
                 )}>
-                   <div className="flex justify-between items-start">
-                     <div className={cn(
-                       "text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
-                       val.highlight ? "text-white opacity-80 group-hover:text-white" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
-                     )}>{val.label}</div>
-                     <div className={cn("transition-colors duration-500", val.highlight ? "text-white" : "text-black/40 group-hover:text-white")}>{val.icon}</div>
-                   </div>
-                   <div className="space-y-6">
-                     <h3 className="text-3xl md:text-4xl font-semibold tracking-tight uppercase leading-[1.1] transition-colors duration-500 group-hover:text-white">{val.title}</h3>
-                     <p className={cn("text-base md:text-lg font-light leading-relaxed transition-all duration-500 group-hover:text-white/90", val.highlight ? "text-white/90" : "text-muted-foreground")}>
+                  <div className="flex justify-between items-start">
+                    <div className={cn(
+                      "text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
+                      val.highlight ? "text-white opacity-80 group-hover:text-white" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
+                    )}>{val.label}</div>
+                    <div className={cn("transition-colors duration-500", val.highlight ? "text-white" : "text-black/40 group-hover:text-white")}>{val.icon}</div>
+                  </div>
+                  <div className="space-y-6">
+                    <h3 className="text-3xl md:text-4xl font-semibold tracking-tight uppercase leading-[1.1] transition-colors duration-500 group-hover:text-white">{val.title}</h3>
+                    <p className={cn("text-base md:text-lg font-light leading-relaxed transition-all duration-500 group-hover:text-white/90", val.highlight ? "text-white/90" : "text-muted-foreground")}>
                         {val.desc}
-                     </p>
-                   </div>
+                    </p>
+                  </div>
                 </Card>
               ))}
            </div>

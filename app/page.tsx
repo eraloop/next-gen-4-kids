@@ -69,12 +69,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* 1. HERO: Mandatory Image Carousel */}
+      
       <section className="relative">
         <Carousel slides={heroSlides} />
       </section>
 
-      {/* 2. PATHWAYS: Moved up for immediate engagement */}
       <AnimatedSection className="bg-neutral-50/30">
         <div className="editorial-container space-y-20 md:space-y-32">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 border-b border-black/10 pb-20">
@@ -88,8 +87,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {[
-              { 
+          {[
+            { 
                 title: "Cybersecurity", 
                 desc: "Building digital shields and responsible netizen skills for the modern landscape.", 
                 label: "Safety First",
@@ -116,33 +115,61 @@ export default function Home() {
                 highlight: false,
                 bgColor: "bg-white"
               }
-            ].map((item, i) => (
-              <Card key={i} className={cn(
-                  "group transition-all duration-700 border-none justify-between h-full min-h-[450px]",
-                  item.highlight ? cn(item.bgColor, "text-white hover:bg-black") : cn("bg-white hover:text-white", item.hoverBg)
-              )}>
-                <div className="space-y-12">
-                  <div className={cn(
-                    "text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
-                    item.highlight ? "text-white/80 group-hover:text-white" : cn(item.color, "group-hover:text-white")
-                  )}>{item.label}</div>
-                  <div className="space-y-6">
-                    <h3 className="text-3xl md:text-4xl font-semibold tracking-tight uppercase leading-[1.1] group-hover:text-white transition-colors duration-500">{item.title}</h3>
-                    <p className={cn("text-base md:text-lg font-light leading-relaxed transition-all duration-500 group-hover:text-white/90", item.highlight ? "text-white/90" : "text-muted-foreground")}>
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
+          ].map((item, i) => (
+            <Card 
+              key={i} 
+              className={cn(
+                "group transition-all duration-700 justify-between h-full min-h-[450px]",
+                item.highlight 
+                  ? cn(item.bgColor, "text-white hover:bg-black border-none") 
+                  : cn("bg-white hover:text-white border border-black/5", item.hoverBg)
+              )}
+            >
+              <div className="space-y-12">
                 <div className={cn(
-                  "pt-10 flex items-center justify-between text-[10px] font-semibold uppercase tracking-widest border-t transition-colors duration-500", 
-                  item.highlight ? "border-white/10 text-white" : "border-black/5 group-hover:border-white/20 group-hover:text-white"
+                  "text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
+                  item.highlight 
+                    ? "text-white/80 group-hover:text-white" 
+                    : cn(item.color, "group-hover:text-white")
                 )}>
-                   <span className="group-hover:text-white">Access Module</span>
-                   <ArrowRight className={cn("w-5 h-5 transition-transform duration-500 group-hover:translate-x-2 group-hover:text-white", item.highlight ? "text-white" : item.color)} />
+                  {item.label}
                 </div>
-              </Card>
-            ))}
-          </div>
+                <div className="space-y-6">
+                  <h3 className="text-3xl md:text-4xl font-semibold tracking-tight uppercase leading-[1.1] group-hover:text-white transition-colors duration-500">
+                    {item.title}
+                  </h3>
+                  <p className={cn(
+                    "text-base md:text-lg font-light leading-relaxed transition-all duration-500 group-hover:text-white/90", 
+                    item.highlight ? "text-white/90" : "text-muted-foreground"
+                  )}>
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+              
+              <div className={cn(
+                "pt-10 flex items-center justify-between text-[10px] font-semibold uppercase tracking-widest border-t transition-colors duration-500", 
+                item.highlight 
+                  ? "border-white/10 text-white" 
+                  : "border-black/5 group-hover:border-white/20 group-hover:text-white"
+              )}>
+                <span className="group-hover:text-white">Access Module</span>
+                <svg 
+                  className={cn(
+                    "w-5 h-5 transition-transform duration-500 group-hover:translate-x-2 group-hover:text-white", 
+                    item.highlight ? "text-white" : item.color
+                  )} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Card>
+          ))}
+        </div>
+
         </div>
       </AnimatedSection>
 

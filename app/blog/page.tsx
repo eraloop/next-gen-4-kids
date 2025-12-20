@@ -74,60 +74,61 @@ export default function BlogPage() {
         <div className="editorial-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {posts.map((post, i) => (
-              <Card key={i} className={cn(
-                    "group border-none transition-all duration-700 flex flex-col justify-between min-h-[500px] md:min-h-[550px] h-full hover:text-white",
-                    post.highlight ? cn(post.bgColor, "text-white hover:bg-black") : cn("bg-neutral-50/50", post.hoverBg)
-              )}>
-                <div className="space-y-12">
-                  <div className={cn(
-                    "flex justify-between items-center text-[10px] font-semibold uppercase tracking-[0.4em] transition-colors duration-500", 
-                    post.highlight ? "text-white opacity-60 group-hover:opacity-100" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
-                  )}>
-                    <span>{post.id}</span>
-                    <span className={cn(
-                      "px-4 py-2 border transition-colors duration-500", 
-                      post.highlight ? "border-white/20 text-white" : cn("border-black/10 group-hover:border-white/20 group-hover:text-white", post.color)
-                    )}>{post.category}</span>
-                  </div>
-                  <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter uppercase leading-[1.1] transition-colors duration-500 group-hover:text-white">
-                    {post.title}
-                  </h3>
-                  <div className={cn(
-                    "flex flex-wrap items-center gap-6 md:gap-8 pt-8 transition-all duration-500", 
-                    post.highlight ? "opacity-80 text-white group-hover:opacity-100" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
-                  )}>
-                     <div className="flex items-center gap-2">
-                        <User2 className={cn("w-3 h-3 transition-colors duration-500", post.highlight ? "text-white" : cn(post.color, "group-hover:text-white"))} />
-                        <span className="text-[10px] font-semibold uppercase tracking-widest">{post.author}</span>
-                     </div>
-                     <div className="flex items-center gap-2">
-                        <Clock className={cn("w-3 h-3 transition-colors duration-500", post.highlight ? "text-white" : cn(post.color, "group-hover:text-white"))} />
-                        <span className="text-[10px] font-semibold uppercase tracking-widest">{post.date}</span>
-                     </div>
-                  </div>
-                </div>
-                <div className={cn(
-                  "pt-16 border-t flex items-center justify-between transition-colors duration-500", 
-                  post.highlight ? "border-white/10" : "border-black/5 group-hover:border-white/10"
-                )}>
-                   <div className={cn(
-                     "flex items-center gap-4 text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
-                     post.highlight ? "text-white" : cn(post.color, "group-hover:text-white")
-                   )}>
-                      Read Blueprint <ArrowRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-4 group-hover:text-white" />
-                   </div>
-                   <Share2 className={cn(
-                     "w-4 h-4 cursor-pointer transition-all duration-500", 
-                     post.highlight ? "text-white opacity-40 group-hover:opacity-100" : "opacity-20 group-hover:opacity-100 group-hover:text-white hover:text-sun"
-                   )} />
-                </div>
-              </Card>
+             <Card key={i} className={cn(
+  "group transition-all duration-700 flex flex-col justify-between min-h-[500px] md:min-h-[550px] h-full hover:text-white",
+  post.highlight 
+    ? cn(post.bgColor, "text-white hover:bg-black border-none") 
+    : cn("bg-neutral-50/50 border border-black/5", post.hoverBg)
+)}>
+  <div className="space-y-12">
+    <div className={cn(
+      "flex justify-between items-center text-[10px] font-semibold uppercase tracking-[0.4em] transition-colors duration-500", 
+      post.highlight ? "text-white opacity-60 group-hover:opacity-100" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
+    )}>
+      <span>{post.id}</span>
+      <span className={cn(
+        "px-4 py-2 border transition-colors duration-500", 
+        post.highlight ? "border-white/20 text-white" : cn("border-black/10 group-hover:border-white/20 group-hover:text-white", post.color)
+      )}>{post.category}</span>
+    </div>
+    <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter uppercase leading-[1.1] transition-colors duration-500 group-hover:text-white">
+      {post.title}
+    </h3>
+    <div className={cn(
+      "flex flex-wrap items-center gap-6 md:gap-8 pt-8 transition-all duration-500", 
+      post.highlight ? "opacity-80 text-white group-hover:opacity-100" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
+    )}>
+       <div className="flex items-center gap-2">
+          <User2 className={cn("w-3 h-3 transition-colors duration-500", post.highlight ? "text-white" : cn(post.color, "group-hover:text-white"))} />
+          <span className="text-[10px] font-semibold uppercase tracking-widest">{post.author}</span>
+       </div>
+       <div className="flex items-center gap-2">
+          <Clock className={cn("w-3 h-3 transition-colors duration-500", post.highlight ? "text-white" : cn(post.color, "group-hover:text-white"))} />
+          <span className="text-[10px] font-semibold uppercase tracking-widest">{post.date}</span>
+       </div>
+    </div>
+  </div>
+  <div className={cn(
+    "pt-16 border-t flex items-center justify-between transition-colors duration-500", 
+    post.highlight ? "border-white/10" : "border-black/5 group-hover:border-white/10"
+  )}>
+     <div className={cn(
+       "flex items-center gap-4 text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
+       post.highlight ? "text-white" : cn(post.color, "group-hover:text-white")
+     )}>
+        Read Blueprint <ArrowRight className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-4 group-hover:text-white" />
+     </div>
+     <Share2 className={cn(
+       "w-4 h-4 cursor-pointer transition-all duration-500", 
+       post.highlight ? "text-white opacity-40 group-hover:opacity-100" : "opacity-20 group-hover:opacity-100 group-hover:text-white hover:text-sun"
+     )} />
+  </div>
+</Card>
             ))}
           </div>
         </div>
       </AnimatedSection>
 
-      {/* 3. Newsletter / Intelligence Intake */}
       <AnimatedSection className="bg-neutral-50/30">
          <div className="editorial-container grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-20 md:gap-32 items-center">
             <div className="space-y-12">

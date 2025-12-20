@@ -44,7 +44,7 @@ export default function ProgramsPage() {
 
   const educatorGuides = [
     { title: "Teaching Digital Ethics", level: "Ages 7-18", code: "EDU-01", color: "text-highlight", hoverBg: "hover:bg-highlight" },
-    { title: "STEM Integration Manual", level: "Professional", code: "EDU-02", color: "text-sky", highlight: true, bgColor: "bg-sky", hoverBg: "hover:bg-highlight" },
+    { title: "STEM Integration Manual", level: "Professional", code: "EDU-02", color: "text-sky", highlight: false, bgColor: "bg-sky", hoverBg: "hover:bg-highlight" },
     { title: "Discovery Lab Setup", level: "Technical", code: "EDU-03", color: "text-leaf", hoverBg: "hover:bg-leaf" }
   ];
 
@@ -70,36 +70,38 @@ export default function ProgramsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {programs.map((p, i) => (
               <Card key={i} className={cn(
-                "group border-none transition-all duration-700 flex flex-col justify-between min-h-[550px] md:min-h-[650px] h-full",
-                p.highlight ? cn(p.bgColor, "text-white hover:bg-black") : cn("bg-neutral-50/50 hover:text-white", p.hoverBg)
-              )}>
-                <div className="space-y-12">
-                  <div className={cn(
-                    "flex justify-between items-center text-[10px] font-semibold uppercase tracking-[0.4em] transition-colors duration-500", 
-                    p.highlight ? "text-white opacity-100" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
-                  )}>
-                    <span className="group-hover:text-white">{p.chapter}</span>
-                    <span className={cn("transition-colors duration-500", p.highlight ? "text-white" : cn(p.accentColor, "group-hover:text-white"))}>{p.level}</span>
-                  </div>
-                  <div className="space-y-6">
-                    <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter uppercase leading-[1.1] group-hover:text-white transition-colors duration-500">{p.title}</h3>
-                    <p className={cn("text-base md:text-lg font-light leading-relaxed transition-all duration-500 group-hover:text-white/80", p.highlight ? "text-white/90" : "opacity-60")}>
-                      {p.desc}
-                    </p>
-                  </div>
-                  <ul className={cn("space-y-4 pt-8 border-t transition-colors duration-500", p.highlight ? "border-white/10" : "border-black/5 group-hover:border-white/10")}>
-                    {p.features.map((f, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest transition-colors duration-500 text-inherit">
-                        <div className={cn("w-1.5 h-1.5 transition-colors duration-500", p.highlight ? "bg-white" : cn(p.accentColor.replace('text-', 'bg-'), "group-hover:bg-white"))} /> {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <Button variant="outline" className={cn(
-                  "w-full h-16 transition-all duration-500 font-semibold mt-12 tactile-pop", 
-                  p.highlight ? "border-white/20 text-white hover:bg-white hover:text-black" : "border-black/10 group-hover:border-white/20 group-hover:text-white hover:bg-white hover:text-black"
-                )}>View Syllabus</Button>
-              </Card>
+  "group transition-all duration-700 flex flex-col justify-between min-h-[550px] md:min-h-[650px] h-full",
+  p.highlight 
+    ? cn(p.bgColor, "text-white hover:bg-black border-none") 
+    : cn("bg-neutral-50/50 hover:text-white border border-black/5", p.hoverBg)
+)}>
+  <div className="space-y-12">
+    <div className={cn(
+      "flex justify-between items-center text-[10px] font-semibold uppercase tracking-[0.4em] transition-colors duration-500", 
+      p.highlight ? "text-white opacity-100" : "opacity-40 group-hover:opacity-100 group-hover:text-white"
+    )}>
+      <span className="group-hover:text-white">{p.chapter}</span>
+      <span className={cn("transition-colors duration-500", p.highlight ? "text-white" : cn(p.accentColor, "group-hover:text-white"))}>{p.level}</span>
+    </div>
+    <div className="space-y-6">
+      <h3 className="text-3xl md:text-5xl font-semibold tracking-tighter uppercase leading-[1.1] group-hover:text-white transition-colors duration-500">{p.title}</h3>
+      <p className={cn("text-base md:text-lg font-light leading-relaxed transition-all duration-500 group-hover:text-white/80", p.highlight ? "text-white/90" : "opacity-60")}>
+        {p.desc}
+      </p>
+    </div>
+    <ul className={cn("space-y-4 pt-8 border-t transition-colors duration-500", p.highlight ? "border-white/10" : "border-black/5 group-hover:border-white/10")}>
+      {p.features.map((f, idx) => (
+        <li key={idx} className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest transition-colors duration-500 text-inherit">
+          <div className={cn("w-1.5 h-1.5 transition-colors duration-500", p.highlight ? "bg-white" : cn(p.accentColor.replace('text-', 'bg-'), "group-hover:bg-white"))} /> {f}
+        </li>
+      ))}
+    </ul>
+  </div>
+  <Button variant="outline" className={cn(
+    "w-full h-16 transition-all duration-500 font-semibold mt-12 tactile-pop", 
+    p.highlight ? "border-white/20 text-white hover:bg-white hover:text-black" : "border-black/10 group-hover:border-white/20 group-hover:text-white hover:bg-white hover:text-black"
+  )}>View Syllabus</Button>
+</Card>
             ))}
           </div>
         </div>
@@ -133,10 +135,12 @@ export default function ProgramsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                  {educatorGuides.map((guide, i) => (
-                   <Card key={i} className={cn(
-                        "group border-none transition-all duration-700 flex flex-col justify-between space-y-12 min-h-[350px] h-full hover:text-white",
-                        guide.highlight ? cn(guide.bgColor, "text-white hover:bg-black") : cn("bg-white", guide.hoverBg)
-                   )}>
+                  <Card key={i} className={cn(
+                      "group transition-all duration-700 flex flex-col justify-between space-y-12 min-h-[350px] h-full hover:text-white",
+                      guide.highlight 
+                        ? cn(guide.bgColor, "text-white hover:bg-black border-none") 
+                        : cn("bg-white border border-black/5", guide.hoverBg)
+                    )}>
                       <div className="space-y-8">
                         <div className={cn(
                           "flex justify-between items-center text-[10px] font-semibold uppercase tracking-widest transition-colors duration-500", 
@@ -149,7 +153,7 @@ export default function ProgramsPage() {
                         <p className={cn("text-[10px] md:text-xs font-semibold uppercase tracking-widest transition-colors duration-500", guide.highlight ? "text-white opacity-60 group-hover:text-white" : "opacity-40 group-hover:text-white group-hover:opacity-60")}>{guide.level}</p>
                       </div>
                       <Button variant="link" className={cn("p-0 h-auto justify-start transition-colors font-semibold tactile-pop", guide.highlight ? "text-white" : "text-black/40 group-hover:text-white")}>Download Guide</Button>
-                   </Card>
+                    </Card>
                  ))}
                  <Card className="bg-sun text-black border-none flex flex-col justify-between space-y-12 min-h-[350px] h-full shadow-xl shadow-sun/5 group transition-all duration-700 hover:bg-black hover:text-white">
                     <div className="flex justify-between items-start">

@@ -89,7 +89,7 @@ export default function ContactPage() {
               <div className="p-10 md:p-12 bg-neutral-900 text-white space-y-8 relative overflow-hidden group rounded-[2rem]">
                  <div className="absolute top-0 right-0 w-32 h-32 bg-sun/10 rounded-full -mr-16 -mt-16 blur-3xl" />
                  <MessageSquare className="w-10 h-10 text-sun relative z-10" />
-                 <h3 className="text-2xl md:text-3xl font-semibold uppercase tracking-tighter text-balance relative z-10">Live <span className="wavy-underline">Support</span> Protocol.</h3>
+                 <h3 className="text-2xl md:text-3xl font-semibold uppercase tracking-tighter text-balance text-white relative z-10">Live <span className="wavy-underline">Support</span> Protocol.</h3>
                  <p className="text-sm opacity-60 leading-relaxed font-light text-balance relative z-10">For immediate technical assistance during school hours, please use our secure faculty portal.</p>
                  <Button variant="outline" className="w-full border-white/20 text-white hover:bg-sun hover:border-sun hover:text-black font-semibold relative z-10 tactile-pop">Access Portal</Button>
               </div>
