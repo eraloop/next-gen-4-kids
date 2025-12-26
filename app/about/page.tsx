@@ -149,7 +149,6 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
-      {/* 3. NEW SECTION: Testimonial/Quote */}
       <AnimatedSection className="bg-neutral-900 text-white">
         <div className="editorial-container flex flex-col items-center text-center space-y-12">
            <Quote className="w-16 h-16 text-highlight opacity-40 shrink-0" />
@@ -163,7 +162,6 @@ export default function AboutPage() {
         </div>
       </AnimatedSection>
 
-      {/* 4. The Journey Forward */}
       <AnimatedSection className="bg-black text-white">
         <div className="editorial-container grid grid-cols-1 lg:grid-cols-2 gap-20 md:gap-32 items-center">
            <div className="space-y-12 md:space-y-16">
